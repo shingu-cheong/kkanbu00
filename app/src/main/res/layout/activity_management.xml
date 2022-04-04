@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="478dp"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="94dp"
+            android:layout_height="match_parent"
+            android:background="#F8E85E"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F8E85E"
+            android:paddingLeft="90dp"
+            android:paddingTop="13dp"
+            android:text="노인정보"
+            android:textColor="#000000"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="653dp"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/home" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_baseline_elderly_24" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_baseline_settings_24" />
+    </LinearLayout>
+</LinearLayout>
