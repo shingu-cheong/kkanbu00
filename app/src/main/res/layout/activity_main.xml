@@ -74,7 +74,7 @@
             android:background="@drawable/round_button"
             android:drawableTop="@drawable/graphb"
             android:paddingTop="30dp"
-            android:text="생활패턴그"
+            android:text="생활패턴그래프"
             android:textSize="19dp" />
 
         <Button
