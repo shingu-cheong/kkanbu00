@@ -24,15 +24,15 @@
         <activity
             android:name=".MainActivity2"
             android:exported="true" />
-        <activity
-            android:name=".management"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".management"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".monitoring"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
+<!--        <activity-->
+<!--            android:name=".MainActivity"-->
+<!--            android:exported="true" />-->
         <activity
             android:name=".IntroActivity"
             android:exported="true">
