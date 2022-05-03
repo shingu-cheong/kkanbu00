@@ -20,9 +20,9 @@ public class monitoring extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monitoring);
 
-        mt_toolbar = (Toolbar) findViewById(R.id.mt_toolbar);
-        setSupportActionBar(mt_toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        mt_toolbar = (Toolbar) findViewById(R.id.mt_toolbar);
+//        setSupportActionBar(mt_toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         mWebView = (WebView) findViewById(R.id.wv);
