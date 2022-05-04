@@ -21,7 +21,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 public class MainActivity extends Fragment {
-    ImageButton btn_live;
+    ImageButton btn_live, btn_schedule;
     ImageView profile;
     View.OnClickListener cl;
 

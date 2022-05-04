@@ -3,15 +3,21 @@ package com.example.kkanbu;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toolbar;
 
 public class monitoring extends AppCompatActivity {
     Toolbar mt_toolbar;
+    ImageView imageView3;
     private WebView mWebView; // 웹뷰 선언
     private WebSettings mWebSettings; //웹뷰세팅
 
@@ -19,6 +25,15 @@ public class monitoring extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monitoring);
+
+        ImageView imageView3 = findViewById(R.id.imageView3);
+        imageView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(monitoring.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
 //        mt_toolbar = (Toolbar) findViewById(R.id.mt_toolbar);
 //        setSupportActionBar(mt_toolbar);
