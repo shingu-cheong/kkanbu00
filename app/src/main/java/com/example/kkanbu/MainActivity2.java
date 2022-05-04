@@ -30,10 +30,13 @@ public class MainActivity2 extends AppCompatActivity {
                     case R.id.home:
                         fragment = new MainActivity();
                         break;
+                    case R.id.oldman:
+                        fragment = new management();
+                        break;
 
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragment).commit();
-                return false;
+                return true;
             }
         });
 

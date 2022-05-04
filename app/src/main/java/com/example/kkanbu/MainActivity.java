@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -17,9 +18,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class MainActivity extends Fragment {
     ImageButton btn_live;
+    ImageView profile;
     View.OnClickListener cl;
 
     @Override
@@ -35,6 +38,10 @@ public class MainActivity extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_main,container,false);
         btn_live = view.findViewById(R.id.btn_live);
+        profile = view.findViewById(R.id.home_profile);
+        GradientDrawable drawable = (GradientDrawable) getContext().getDrawable(R.drawable.home_profileround);
+        profile.setBackground(drawable);
+        profile.setClipToOutline(true);
 
         cl = new View.OnClickListener() {
             @Override
