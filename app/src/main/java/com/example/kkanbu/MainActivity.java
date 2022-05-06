@@ -38,6 +38,7 @@ public class MainActivity extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_main,container,false);
         btn_live = view.findViewById(R.id.btn_live);
+        btn_schedule = view.findViewById(R.id.btn_schedule);
         profile = view.findViewById(R.id.home_profile);
         GradientDrawable drawable = (GradientDrawable) getContext().getDrawable(R.drawable.home_profileround);
         profile.setBackground(drawable);
@@ -51,11 +52,15 @@ public class MainActivity extends Fragment {
                         Intent a = new Intent(getActivity(), monitoring.class);
                         startActivity(a);
                         break;
+                    case R.id.btn_schedule:
+                        Intent b = new Intent(getActivity(), schedule.class);
+                        startActivity(b);
+                        break;
                 }
             }
         };
-
         btn_live.setOnClickListener(cl);
+        btn_schedule.setOnClickListener(cl);
         return view;
     }
 }
