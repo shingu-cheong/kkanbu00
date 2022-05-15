@@ -27,7 +27,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/addman"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -93,7 +93,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_manBirth"
+                    android:id="@+id/et_manPh"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="생년월일"
+                        android:hint="전화번호"
                         android:strokeColor="@color/mainColor"
                         android:textColor="@color/textColor"
                         android:textCursorDrawable="@drawable/registercursor" />
@@ -137,7 +137,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/et_manPh"
+                    android:id="@+id/et_managerPh"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="핸드폰"
+                        android:hint="보호자 번호"
                         android:strokeColor="@color/mainColor"
                         android:textColor="@color/textColor"
                         android:textCursorDrawable="@drawable/registercursor" />
@@ -174,7 +174,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="상세"
+                        android:hint="특이사항"
                         android:strokeColor="@color/mainColor"
                         android:textColor="@color/textColor"
                         android:textCursorDrawable="@drawable/registercursor" />

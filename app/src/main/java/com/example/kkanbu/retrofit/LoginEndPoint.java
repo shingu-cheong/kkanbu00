@@ -17,7 +17,7 @@ import retrofit2.http.Path;
 public interface LoginEndPoint {
 
     @GET("/login/list")
-    public List<Login> getAllDate();
+    Call<List<Login>> getAllDate();
 
     @GET("/login/{id}")
     Call<Optional<Login>> getDataById(@Path("id") int id);

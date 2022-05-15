@@ -10,60 +10,50 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kkanbu.pojo.Olderman;
+
 import java.util.ArrayList;
+import java.util.List;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
-    Context mContext;
-    ArrayList<item> items = new ArrayList<item>();
+public class Adapter extends RecyclerView.Adapter<Adapter.OldermanViewHolder> {
+    Context context;
+    List<Olderman> oldermanArrayList;
 
-    public Adapter(Context mContext) {
-        this.mContext = mContext;
+    public Adapter(Context context, List<Olderman> oldermanArrayList){
+        this.context = context;
+        this.oldermanArrayList = oldermanArrayList;
     }
+
 
     @NonNull
     @Override
-    public Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View itemView = inflater.inflate(R.layout.item, parent, false);
-
-        return new ViewHolder(itemView);
+    public Adapter.OldermanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item,parent,false);
+        return new OldermanViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        item item = items.get(position);
-        holder.setItem(item);
+    public void onBindViewHolder(@NonNull Adapter.OldermanViewHolder oldermanViewHolder, int position) {
+
+        oldermanViewHolder.manname.setText(oldermanArrayList.get(position).getManName());
+        oldermanViewHolder.mngph.setText(oldermanArrayList.get(position).getManManager());
+        oldermanViewHolder.manph.setText(oldermanArrayList.get(position).getManPh());
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return oldermanArrayList.size();
     }
 
-    public void additem(item item) {
-        items.add(item);
-    }
-
-    static class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView imageView;
-        TextView name;
-        TextView gender;
-        TextView ph;
-
-        public ViewHolder (@NonNull View itemView) {
+    public class OldermanViewHolder extends RecyclerView.ViewHolder {
+        TextView manname, manph, mngph;
+        public OldermanViewHolder(@NonNull View itemView) {
             super(itemView);
+            manname = itemView.findViewById(R.id.name);
+            manph = itemView.findViewById(R.id.gender);
+            mngph = itemView.findViewById(R.id.ph);
 
-            imageView = itemView.findViewById(R.id.imageView);
-            name = itemView.findViewById(R.id.name);
-            gender = itemView.findViewById(R.id.gender);
-            ph = itemView.findViewById(R.id.ph);
-        }
 
-        public void setItem(item item){
-            imageView.setImageResource(item.resId);
-            name.setText(item.name);
-            gender.setText(item.gender);
-            ph.setText(item.ph);
         }
     }
 }

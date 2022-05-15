@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kkanbu">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,7 +13,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".AddOlderMan"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
@@ -28,7 +27,8 @@
             android:name=".cameratest"
             android:exported="true" />
         <activity
-            android:name=".MainActivity2"
+            android:name="com.example.kkanbu.MainActivity2"
+            android:label="kkanbu"
             android:exported="true" /> <!-- <activity -->
         <!-- android:name=".management" -->
         <!-- android:exported="true" /> -->
