@@ -15,8 +15,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.example.kkanbu.pojo.Elder;
 import com.example.kkanbu.pojo.Olderman;
 import com.example.kkanbu.retrofit.BaseEndPoint;
+import com.example.kkanbu.retrofit.ElderEndPoint;
 import com.example.kkanbu.retrofit.OldermanEndPoint;
 import com.example.kkanbu.retrofit.RegistrationendPoint;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -34,7 +36,7 @@ public class management extends Fragment {
 
     RecyclerView recyclerView;
     FloatingActionButton addman;
-    List<Olderman> oldermanList;
+    List<Elder> elderList;
 
     Adapter adapter;
     View.OnClickListener cl;
@@ -58,28 +60,28 @@ public class management extends Fragment {
 
 //        recyclerView.setLayoutManager(layoutManager);
         addman = view.findViewById(R.id.btn_addman);
-        oldermanList = new ArrayList<>();
+        elderList = new ArrayList<>();
 
 
 
 //        adapter.additem(new item(R.drawable.live, "이현빈", "남", "010-7713-8568"));
-        OldermanEndPoint oldermanEndPoint = BaseEndPoint.retrofit.create(OldermanEndPoint.class);
-        Olderman olderman = new Olderman();
-        Call<List<Olderman>> call = oldermanEndPoint.getmyolderman("1");
-        call.enqueue(new Callback<List<Olderman>>() {
+        ElderEndPoint elderEndPoint = BaseEndPoint.retrofit.create(ElderEndPoint.class);
+        Elder elder = new Elder();
+        Call<List<Elder>> call = elderEndPoint.getUserelder(1);
+        call.enqueue(new Callback<List<Elder>>() {
             @Override
-            public void onResponse(Call<List<Olderman>> call, Response<List<Olderman>> response) {
+            public void onResponse(Call<List<Elder>> call, Response<List<Elder>> response) {
 
 
-                oldermanList = (List<Olderman>) response.body();
-                adapter = new Adapter(getActivity(), oldermanList);
+                elderList = (List<Elder>) response.body();
+                adapter = new Adapter(getActivity(), elderList);
 
                 recyclerView.setAdapter(adapter);
 
             }
 
             @Override
-            public void onFailure(Call<List<Olderman>> call, Throwable t) {
+            public void onFailure(Call<List<Elder>> call, Throwable t) {
 
             }
         });

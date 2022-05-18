@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kkanbu.pojo.Elder;
 import com.example.kkanbu.pojo.Olderman;
 
 import java.util.ArrayList;
@@ -17,11 +18,11 @@ import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.OldermanViewHolder> {
     Context context;
-    List<Olderman> oldermanArrayList;
+    List<Elder> elderArrayList;
 
-    public Adapter(Context context, List<Olderman> oldermanArrayList){
+    public Adapter(Context context, List<Elder> elderArrayList){
         this.context = context;
-        this.oldermanArrayList = oldermanArrayList;
+        this.elderArrayList = elderArrayList;
     }
 
 
@@ -35,23 +36,23 @@ public class Adapter extends RecyclerView.Adapter<Adapter.OldermanViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull Adapter.OldermanViewHolder oldermanViewHolder, int position) {
 
-        oldermanViewHolder.manname.setText(oldermanArrayList.get(position).getManName());
-        oldermanViewHolder.mngph.setText(oldermanArrayList.get(position).getManManager());
-        oldermanViewHolder.manph.setText(oldermanArrayList.get(position).getManPh());
+        oldermanViewHolder.manname.setText(elderArrayList.get(position).getElderName());
+        oldermanViewHolder.elderph.setText(elderArrayList.get(position).getElderPh());
+        oldermanViewHolder.mngph.setText(elderArrayList.get(position).getMngPh());
     }
 
     @Override
     public int getItemCount() {
-        return oldermanArrayList.size();
+        return elderArrayList.size();
     }
 
     public class OldermanViewHolder extends RecyclerView.ViewHolder {
-        TextView manname, manph, mngph;
+        TextView manname, elderph, mngph;
         public OldermanViewHolder(@NonNull View itemView) {
             super(itemView);
             manname = itemView.findViewById(R.id.name);
-            manph = itemView.findViewById(R.id.gender);
-            mngph = itemView.findViewById(R.id.ph);
+            elderph = itemView.findViewById(R.id.elder_ph);
+            mngph = itemView.findViewById(R.id.mng_ph);
 
 
         }
