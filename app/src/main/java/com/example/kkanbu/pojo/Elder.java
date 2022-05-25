@@ -35,6 +35,17 @@ public class Elder {
     @Expose
     private String mngPh;
 
+    @SerializedName(value = "elderImg")
+    @Expose
+    private String elderImg;
+
+    public String getElderImg() {
+        return elderImg;
+    }
+
+    public void setElderImg(String elderImg) {
+        this.elderImg = elderImg;
+    }
 
     public Integer getId() {
         return id;
@@ -84,6 +95,7 @@ public class Elder {
                 ", elderPh='" + elderPh + '\'' +
                 ", elderAdr='" + elderAdr + '\'' +
                 ", mngPh='" + mngPh + '\'' +
+                ", elderImg='" + elderImg + '\'' +
                 '}';
     }
 
@@ -95,5 +107,7 @@ public class Elder {
     public Elder() {
         super();
     }
+
+
 
 }

@@ -17,6 +17,7 @@ import com.example.kkanbu.pojo.Login;
 import com.example.kkanbu.pojo.LoginRegistration;
 import com.example.kkanbu.retrofit.BaseEndPoint;
 import com.example.kkanbu.retrofit.LoginEndPoint;
+import com.example.kkanbu.retrofit.UserEndPoint;
 import com.example.kkanbu.utils.ProjectConstants;
 
 import java.util.Map;
@@ -52,11 +53,12 @@ public class login extends AppCompatActivity {
                     case R.id.login_button:
                         boolean validation = checkValidation();
                         if(validation){
-                            Login login = new Login();
-                            login.setEmail(login_mail.toString());
-                            login.setPassword(login_psw.toString());
-                            LoginEndPoint loginEndPoint = BaseEndPoint.retrofit.create(LoginEndPoint.class);
-                            Call<Map> checkMapCall = loginEndPoint.checkUserNameAndPassword(login);
+//                            Login login = new Login();
+//                            login.setEmail(login_mail.toString());
+//                            Log.e("email:", login_mail.toString());
+//                            login.setPassword(login_psw.toString());
+                            UserEndPoint userEndPoint = BaseEndPoint.retrofit.create(UserEndPoint.class);
+                            Call<Map> checkMapCall = userEndPoint.checkUserNameAndPassword(login_mail.toString());
                             SweetAlertDialog pDialog = new SweetAlertDialog(login.this,SweetAlertDialog.PROGRESS_TYPE);
                             pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
                             pDialog.setTitleText("Loading....");
@@ -66,27 +68,28 @@ public class login extends AppCompatActivity {
                                 @Override
                                 public void onResponse(Call<Map> call, Response<Map> response) {
                                     pDialog.hide();
-                                    Log.e("응답", response.body().get("message").toString());
-//                                    if(response.body().get("message") == "Login Successfully" )
-//                                    {
-//                                        new SweetAlertDialog(login.this)
-//                                                .setTitleText(response.body().get("message").toString())
-//                                                .show();
-//                                        myEdit = sharedPreferences.edit();
-//                                        myEdit.putBoolean(ProjectConstants.IS_LOGIN, false);
-//                                        myEdit.commit();
-//                                        Intent intent = new Intent(com.example.kkanbu.login.this, MainActivity2.class);
-//                                        startActivity(intent);
-//                                        finish();
-//                                    }
-//                                    else{
-//                                        new SweetAlertDialog(login.this, SweetAlertDialog.ERROR_TYPE)
-//                                                .setTitleText("Oops..")
-//                                                .setContentText(response.body().get("message").toString())
-//                                                .show();
-//
-//
-//                                    }
+//                                    Log.e("응답", response.body().get("message").toString());
+                                    if(response.body().get("message") == "Login Successfully" )
+                                    {
+                                        new SweetAlertDialog(login.this)
+                                                .setTitleText(response.body().get("message").toString())
+                                                .show();
+                                        myEdit = sharedPreferences.edit();
+                                        myEdit.putBoolean(ProjectConstants.IS_LOGIN, true);
+                                        myEdit.putString(ProjectConstants.LOGIN_USER, login_mail.toString() )
+                                        myEdit.commit();
+                                        Intent intent = new Intent(com.example.kkanbu.login.this, MainActivity2.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                    else{
+                                        new SweetAlertDialog(login.this, SweetAlertDialog.ERROR_TYPE)
+                                                .setTitleText("Oops..")
+                                                .setContentText(response.body().get("message").toString())
+                                                .show();
+
+
+                                    }
 
 //                                    Intent intent = new Intent(login.this, MainActivity2.class);
 //                                    startActivity(intent);

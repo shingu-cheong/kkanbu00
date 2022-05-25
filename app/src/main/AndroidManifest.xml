@@ -12,10 +12,10 @@
         android:theme="@style/Theme.Kkanbu"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".AddOlderMan"
+            android:name="com.example.kkanbu.AddOlderMan"
             android:exported="true" />
         <activity
-            android:name=".RegisterActivity"
+            android:name="com.example.kkanbu.RegisterActivity"
             android:exported="true" />
         <activity
             android:name=".login"
@@ -28,7 +28,6 @@
             android:exported="true" />
         <activity
             android:name="com.example.kkanbu.MainActivity2"
-            android:label="kkanbu"
             android:exported="true" /> <!-- <activity -->
         <!-- android:name=".management" -->
         <!-- android:exported="true" /> -->

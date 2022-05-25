@@ -6,14 +6,18 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.kkanbu.pojo.LoginRegistration;
+import com.example.kkanbu.pojo.Olderman;
 import com.example.kkanbu.pojo.Registration;
+import com.example.kkanbu.pojo.User;
 import com.example.kkanbu.retrofit.BaseEndPoint;
 import com.example.kkanbu.retrofit.RegistrationendPoint;
+import com.example.kkanbu.retrofit.UserEndPoint;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Map;
@@ -49,9 +53,11 @@ public class RegisterActivity extends AppCompatActivity {
                     case R.id.join_button:
                         boolean validation = checkValidation();
                         if(validation){
-                            LoginRegistration loginRegistration = setLoginRegistrationData();
-                            RegistrationendPoint registrationendPoint = BaseEndPoint.retrofit.create(RegistrationendPoint.class);
-                            Call<Map> addNewUser = registrationendPoint.putNewDataOnDb(loginRegistration);
+                            User user = setUserData();
+                            UserEndPoint userEndPoint = BaseEndPoint.retrofit.create(UserEndPoint.class);
+//                            LoginRegistration loginRegistration = setLoginRegistrationData();
+//                            RegistrationendPoint registrationendPoint = BaseEndPoint.retrofit.create(RegistrationendPoint.class);
+                            Call<Map> addNewUser = userEndPoint.putNewDataOnDb(user);
                             SweetAlertDialog pDialog = new SweetAlertDialog(RegisterActivity.this,SweetAlertDialog.PROGRESS_TYPE);
                             pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
                             pDialog.setTitleText("Loading....");
@@ -77,6 +83,26 @@ public class RegisterActivity extends AppCompatActivity {
                                             .show();
                                 }
                             });
+//                            addNewUser.enqueue(new Callback<Map>() {
+//                                @Override
+//                                public void onResponse(Call<Map> call, Response<Map> response) {
+//                                    pDialog.hide();
+//                                    new SweetAlertDialog(RegisterActivity.this)
+//                                            .setTitleText(response.body().get("message").toString())
+//                                            .show();
+//                                    Intent intent = new Intent(RegisterActivity.this, MainActivity2.class);
+//                                    startActivity(intent);
+//                                    finish();
+//                                }
+//
+//                                @Override
+//                                public void onFailure(Call<Map> call, Throwable t) {
+//                                    new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
+//                                            .setTitleText("Oops..")
+//                                            .setContentText(t.getMessage())
+//                                            .show();
+//                                }
+//                            });
                         }
 
                 }
@@ -88,22 +114,34 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private LoginRegistration setLoginRegistrationData() {
-        LoginRegistration loginRegistration = new LoginRegistration();
-        loginRegistration.setAddress1(null);
-        loginRegistration.setCity(null);
-        loginRegistration.setDob(null);
-        loginRegistration.setFullname(null);
-        loginRegistration.setGender("Male");
-        loginRegistration.setPincode(null);
-        loginRegistration.setState(null);
+//    private LoginRegistration setLoginRegistrationData() {
+//        LoginRegistration loginRegistration = new LoginRegistration();
+//        loginRegistration.setAddress1(null);
+//        loginRegistration.setCity(null);
+//        loginRegistration.setDob(null);
+//        loginRegistration.setFullname(null);
+//        loginRegistration.setGender("Male");
+//        loginRegistration.setPincode(null);
+//        loginRegistration.setState(null);
+//
+//        loginRegistration.setEmail(et_email.getEditText().getText().toString());
+//        loginRegistration.setMobile(null);
+//        loginRegistration.setPassword(et_psw.getEditText().getText().toString());
+//
+//        loginRegistration.setUsername(et_name.getEditText().getText().toString());
+//        return loginRegistration;
+//    }
 
-        loginRegistration.setEmail(et_email.getEditText().getText().toString());
-        loginRegistration.setMobile(null);
-        loginRegistration.setPassword(et_psw.getEditText().getText().toString());
+    private User setUserData() {
 
-        loginRegistration.setUsername(et_name.getEditText().getText().toString());
-        return loginRegistration;
+        User user = new User();
+        user.setUserEmail(et_email.getEditText().getText().toString());
+        Log.e("a", et_email.getEditText().getText().toString());
+        user.setUserName(et_name.getEditText().getText().toString());
+        user.setUserPassword(et_psw.getEditText().getText().toString());
+        user.setUserImg(null);
+        user.setUserPh(null);
+        return user;
     }
 
 

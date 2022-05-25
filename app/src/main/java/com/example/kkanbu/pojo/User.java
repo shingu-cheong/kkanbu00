@@ -1,15 +1,12 @@
 package com.example.kkanbu.pojo;
 
+import androidx.annotation.InspectableProperty;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
-@ToString
+
 public class User {
 
     @SerializedName("id")
@@ -25,6 +22,20 @@ public class User {
     @SerializedName("userPh")
     @Expose
     private String userPh;
+
+    @SerializedName("userEmail")
+    @Expose
+    private String userEmail;
+
+    @SerializedName("userPassword")
+    @Expose
+    private String userPassword;
+
+    @SerializedName("userImg")
+    @Expose
+    private String userImg;
+
+
 
     public Integer getId() {
         return id;
@@ -50,16 +61,45 @@ public class User {
         this.userPh = userPh;
     }
 
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public String getUserImg() {
+        return userImg;
+    }
+
+    public void setUserImg(String userImg) {
+        this.userImg = userImg;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
                 ", userPh='" + userPh + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userImg='" + userImg + '\'' +
                 '}';
     }
 
     public User() {
         super();
     }
+
+
 }
