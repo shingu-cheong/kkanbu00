@@ -57,54 +57,54 @@ public class login extends AppCompatActivity {
 //                            login.setEmail(login_mail.toString());
 //                            Log.e("email:", login_mail.toString());
 //                            login.setPassword(login_psw.toString());
-                            UserEndPoint userEndPoint = BaseEndPoint.retrofit.create(UserEndPoint.class);
-                            Call<Map> checkMapCall = userEndPoint.checkUserNameAndPassword(login_mail.toString());
+//                            UserEndPoint userEndPoint = BaseEndPoint.retrofit.create(UserEndPoint.class);
+//                            Call<Map> checkMapCall = userEndPoint.checkUserNameAndPassword(login_mail.toString());
                             SweetAlertDialog pDialog = new SweetAlertDialog(login.this,SweetAlertDialog.PROGRESS_TYPE);
                             pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
                             pDialog.setTitleText("Loading....");
                             pDialog.setCancelable(false);
                             pDialog.show();
-                            checkMapCall.enqueue(new Callback<Map>() {
-                                @Override
-                                public void onResponse(Call<Map> call, Response<Map> response) {
-                                    pDialog.hide();
-//                                    Log.e("응답", response.body().get("message").toString());
-                                    if(response.body().get("message") == "Login Successfully" )
-                                    {
-                                        new SweetAlertDialog(login.this)
-                                                .setTitleText(response.body().get("message").toString())
-                                                .show();
-                                        myEdit = sharedPreferences.edit();
-                                        myEdit.putBoolean(ProjectConstants.IS_LOGIN, true);
-                                        myEdit.putString(ProjectConstants.LOGIN_USER, login_mail.toString() )
-                                        myEdit.commit();
-                                        Intent intent = new Intent(com.example.kkanbu.login.this, MainActivity2.class);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                    else{
-                                        new SweetAlertDialog(login.this, SweetAlertDialog.ERROR_TYPE)
-                                                .setTitleText("Oops..")
-                                                .setContentText(response.body().get("message").toString())
-                                                .show();
-
-
-                                    }
-
-//                                    Intent intent = new Intent(login.this, MainActivity2.class);
-//                                    startActivity(intent);
-//                                    finish();
-                                }
-
-                                @Override
-                                public void onFailure(Call<Map> call, Throwable t) {
-                                    new SweetAlertDialog(login.this, SweetAlertDialog.ERROR_TYPE)
-                                            .setTitleText("Oops..")
-                                            .setContentText(t.getMessage())
-                                            .show();
-
-                                }
-                            });
+//                            checkMapCall.enqueue(new Callback<Map>() {
+//                                @Override
+//                                public void onResponse(Call<Map> call, Response<Map> response) {
+//                                    pDialog.hide();
+////                                    Log.e("응답", response.body().get("message").toString());
+//                                    if(response.body().get("message") == "Login Successfully" )
+//                                    {
+//                                        new SweetAlertDialog(login.this)
+//                                                .setTitleText(response.body().get("message").toString())
+//                                                .show();
+//                                        myEdit = sharedPreferences.edit();
+//                                        myEdit.putBoolean(ProjectConstants.IS_LOGIN, true);
+//                                        myEdit.putString(ProjectConstants.LOGIN_USER, login_mail.toString() );
+//                                        myEdit.commit();
+//                                        Intent intent = new Intent(com.example.kkanbu.login.this, MainActivity2.class);
+//                                        startActivity(intent);
+//                                        finish();
+//                                    }
+//                                    else{
+//                                        new SweetAlertDialog(login.this, SweetAlertDialog.ERROR_TYPE)
+//                                                .setTitleText("Oops..")
+//                                                .setContentText(response.body().get("message").toString())
+//                                                .show();
+//
+//
+//                                    }
+//
+////                                    Intent intent = new Intent(login.this, MainActivity2.class);
+////                                    startActivity(intent);
+////                                    finish();
+//                                }
+//
+//                                @Override
+//                                public void onFailure(Call<Map> call, Throwable t) {
+//                                    new SweetAlertDialog(login.this, SweetAlertDialog.ERROR_TYPE)
+//                                            .setTitleText("Oops..")
+//                                            .setContentText(t.getMessage())
+//                                            .show();
+//
+//                                }
+//                            });
                         }
                         
 

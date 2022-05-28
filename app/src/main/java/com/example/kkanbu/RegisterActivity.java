@@ -57,18 +57,18 @@ public class RegisterActivity extends AppCompatActivity {
                             UserEndPoint userEndPoint = BaseEndPoint.retrofit.create(UserEndPoint.class);
 //                            LoginRegistration loginRegistration = setLoginRegistrationData();
 //                            RegistrationendPoint registrationendPoint = BaseEndPoint.retrofit.create(RegistrationendPoint.class);
-                            Call<Map> addNewUser = userEndPoint.putNewDataOnDb(user);
+                            Call<User> addNewUser = userEndPoint.saveUser(user);
                             SweetAlertDialog pDialog = new SweetAlertDialog(RegisterActivity.this,SweetAlertDialog.PROGRESS_TYPE);
                             pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
                             pDialog.setTitleText("Loading....");
                             pDialog.setCancelable(true);
                             pDialog.show();
-                            addNewUser.enqueue(new Callback<Map>() {
+                            addNewUser.enqueue(new Callback<User>() {
                                 @Override
-                                public void onResponse(Call<Map> call, Response<Map> response) {
+                                public void onResponse(Call<User> call, Response<User> response) {
                                     pDialog.hide();
                                     new SweetAlertDialog(RegisterActivity.this)
-                                            .setTitleText(response.body().get("message").toString())
+                                            .setTitleText(response.body().toString())
                                             .show();
                                     Intent intent = new Intent(RegisterActivity.this, MainActivity2.class);
                                     startActivity(intent);
@@ -76,13 +76,33 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
 
                                 @Override
-                                public void onFailure(Call<Map> call, Throwable t) {
+                                public void onFailure(Call<User> call, Throwable t) {
                                     new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
                                             .setTitleText("Oops..")
                                             .setContentText(t.getMessage())
                                             .show();
                                 }
                             });
+//                            addNewUser.enqueue(new Callback<Map>() {
+//                                @Override
+//                                public void onResponse(Call<Map> call, Response<Map> response) {
+//                                    pDialog.hide();
+//                                    new SweetAlertDialog(RegisterActivity.this)
+//                                            .setTitleText(response.body().get("message").toString())
+//                                            .show();
+//                                    Intent intent = new Intent(RegisterActivity.this, MainActivity2.class);
+//                                    startActivity(intent);
+//                                    finish();
+//                                }
+//
+//                                @Override
+//                                public void onFailure(Call<Map> call, Throwable t) {
+//                                    new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
+//                                            .setTitleText("Oops..")
+//                                            .setContentText(t.getMessage())
+//                                            .show();
+//                                }
+//                            });
 //                            addNewUser.enqueue(new Callback<Map>() {
 //                                @Override
 //                                public void onResponse(Call<Map> call, Response<Map> response) {

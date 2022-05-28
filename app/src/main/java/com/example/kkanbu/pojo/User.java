@@ -5,6 +5,11 @@ import androidx.annotation.InspectableProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.time.LocalDateTime;
+
+import lombok.Getter;
+import lombok.Setter;
+
 
 
 public class User {
@@ -35,7 +40,13 @@ public class User {
     @Expose
     private String userImg;
 
+    @SerializedName("createAt")
+    @Expose
+    private LocalDateTime createdAt;
 
+    @SerializedName("updatedAt")
+    @Expose
+    private LocalDateTime updatedAt;
 
     public Integer getId() {
         return id;
@@ -85,6 +96,22 @@ public class User {
         this.userImg = userImg;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -94,6 +121,8 @@ public class User {
                 ", userEmail='" + userEmail + '\'' +
                 ", userPassword='" + userPassword + '\'' +
                 ", userImg='" + userImg + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
                 '}';
     }
 
