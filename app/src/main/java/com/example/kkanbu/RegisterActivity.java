@@ -68,8 +68,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void onResponse(Call<User> call, Response<User> response) {
                                     pDialog.hide();
                                     new SweetAlertDialog(RegisterActivity.this)
-                                            .setTitleText(response.body().toString())
+                                            .setTitleText("등록완료")
                                             .show();
+                                    Log.e("반응", response.body().toString());
                                     Intent intent = new Intent(RegisterActivity.this, MainActivity2.class);
                                     startActivity(intent);
                                     finish();

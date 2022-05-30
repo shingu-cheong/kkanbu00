@@ -44,6 +44,9 @@ public interface UserEndPoint {
     @GET("/api/v1/users/{id}")
     Call<User> getUsers(@Path("id") int id);
 
+    @GET("/api/v1/users/{email}/{password}")
+    Call<User> findUserbyEmail(@Path("email") String email, @Path("password") String password) throws Exception;
+
     @POST("/api/v1/users")
     Call<User> saveUser(@Body User user);
 

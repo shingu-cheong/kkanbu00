@@ -65,26 +65,26 @@ public class management extends Fragment {
 
 
 //        adapter.additem(new item(R.drawable.live, "이현빈", "남", "010-7713-8568"));
-        ElderEndPoint elderEndPoint = BaseEndPoint.retrofit.create(ElderEndPoint.class);
-        Elder elder = new Elder();
-        Call<List<Elder>> call = elderEndPoint.getUserelder(1);
-        call.enqueue(new Callback<List<Elder>>() {
-            @Override
-            public void onResponse(Call<List<Elder>> call, Response<List<Elder>> response) {
-
-
-                elderList = (List<Elder>) response.body();
-                adapter = new Adapter(getActivity(), elderList);
-
-                recyclerView.setAdapter(adapter);
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Elder>> call, Throwable t) {
-
-            }
-        });
+//        ElderEndPoint elderEndPoint = BaseEndPoint.retrofit.create(ElderEndPoint.class);
+//        Elder elder = new Elder();
+//        Call<List<Elder>> call = elderEndPoint.getUserelder(1);
+//        call.enqueue(new Callback<List<Elder>>() {
+//            @Override
+//            public void onResponse(Call<List<Elder>> call, Response<List<Elder>> response) {
+//
+//
+//                elderList = (List<Elder>) response.body();
+//                adapter = new Adapter(getActivity(), elderList);
+//
+//                recyclerView.setAdapter(adapter);
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Elder>> call, Throwable t) {
+//
+//            }
+//        });
 //        Call<Olderman> checkMapCall = oldermanEndPoint.getDataById(1);
 //        checkMapCall.enqueue(new Callback<Olderman>() {
 //            @Override

@@ -40,13 +40,13 @@ public class User {
     @Expose
     private String userImg;
 
-    @SerializedName("createAt")
-    @Expose
-    private LocalDateTime createdAt;
-
-    @SerializedName("updatedAt")
-    @Expose
-    private LocalDateTime updatedAt;
+//    @SerializedName("createdAt")
+//    @Expose
+//    private LocalDateTime createdAt;
+//
+//    @SerializedName("updatedAt")
+//    @Expose
+//    private LocalDateTime updatedAt;
 
     public Integer getId() {
         return id;
@@ -72,7 +72,7 @@ public class User {
         this.userPh = userPh;
     }
 
-    public String getUserEmail() {
+    public String getUserEmail(String s) {
         return userEmail;
     }
 
@@ -95,22 +95,22 @@ public class User {
     public void setUserImg(String userImg) {
         this.userImg = userImg;
     }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+//
+//    public LocalDateTime getCreatedAt() {
+//        return createdAt;
+//    }
+//
+//    public void setCreatedAt(LocalDateTime createdAt) {
+//        this.createdAt = createdAt;
+//    }
+//
+//    public LocalDateTime getUpdatedAt() {
+//        return updatedAt;
+//    }
+//
+//    public void setUpdatedAt(LocalDateTime updatedAt) {
+//        this.updatedAt = updatedAt;
+//    }
 
     @Override
     public String toString() {
@@ -121,8 +121,8 @@ public class User {
                 ", userEmail='" + userEmail + '\'' +
                 ", userPassword='" + userPassword + '\'' +
                 ", userImg='" + userImg + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
+//                ", createdAt=" + createdAt +'\'' +
+//                ", updatedAt=" + updatedAt +
                 '}';
     }
 
