@@ -102,11 +102,10 @@ public class login extends AppCompatActivity {
 
                                         sharedPreferences = getSharedPreferences(ProjectConstants.PREF_NAME, MODE_PRIVATE);
                                         myEdit = sharedPreferences.edit();
-                                        myEdit.putBoolean("IS_LOGIN", true);
-                                        myEdit.putString("USER_EMAIL", login_mail.getText().toString());
-                                        myEdit.putString("USER_NUM", response.body().getId().toString());
+                                        myEdit.putBoolean(ProjectConstants.IS_LOGIN, true);
+                                        myEdit.putString(ProjectConstants.USER_EMAIL, login_mail.getText().toString());
+                                        myEdit.putInt(ProjectConstants.USER_NUM, response.body().getId().intValue());
                                         myEdit.apply();
-                                        Log.e("loginuser", sharedPreferences.getString("USER_NUM", "USER_NUM"));
 
 //                                        Log.e("usernum", user.get().getId().toString());
                                         Intent intent = new Intent(com.example.kkanbu.login.this, MainActivity2.class);

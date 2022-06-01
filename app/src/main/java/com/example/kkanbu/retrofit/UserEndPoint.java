@@ -42,7 +42,7 @@ public interface UserEndPoint {
     Call<List<User>> getUsers();
 
     @GET("/api/v1/users/{id}")
-    Call<User> getUsers(@Path("id") int id);
+    Call<User> getSingleUser(@Path("id") int id);
 
     @GET("/api/v1/users/{email}/{password}")
     Call<User> findUserbyEmail(@Path("email") String email, @Path("password") String password) throws Exception;
@@ -52,4 +52,5 @@ public interface UserEndPoint {
 
     @PUT("/api/v1/users/{id}")
     Call<User> updateUser(@Path("id") int id,@Body User user);
+
 }

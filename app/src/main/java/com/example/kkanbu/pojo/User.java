@@ -6,6 +6,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -40,13 +44,21 @@ public class User {
     @Expose
     private String userImg;
 
-//    @SerializedName("createdAt")
+
+//    @JoinTable(name = "user_elder",
+//            joinColumns = { @JoinColumn(name = "user_num")},
+//            inverseJoinColumns = {@JoinColumn(name = "elder_num")})
+//    @SerializedName("userElders")
 //    @Expose
-//    private LocalDateTime createdAt;
+//    private List<UserElder> userElders = new ArrayList<>();
 //
-//    @SerializedName("updatedAt")
-//    @Expose
-//    private LocalDateTime updatedAt;
+//    public List<UserElder> getUserElders() {
+//        return userElders;
+//    }
+//
+//    public void setUserElders(List<UserElder> userElders) {
+//        this.userElders = userElders;
+//    }
 
     public Integer getId() {
         return id;
@@ -112,6 +124,7 @@ public class User {
 //        this.updatedAt = updatedAt;
 //    }
 
+
     @Override
     public String toString() {
         return "User{" +
@@ -121,8 +134,7 @@ public class User {
                 ", userEmail='" + userEmail + '\'' +
                 ", userPassword='" + userPassword + '\'' +
                 ", userImg='" + userImg + '\'' +
-//                ", createdAt=" + createdAt +'\'' +
-//                ", updatedAt=" + updatedAt +
+//                ", userElders=" + userElders +
                 '}';
     }
 

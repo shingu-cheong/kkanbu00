@@ -4,7 +4,11 @@ package com.example.kkanbu.pojo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -38,6 +42,10 @@ public class Elder {
     @SerializedName(value = "elderImg")
     @Expose
     private String elderImg;
+
+//    @SerializedName(value = "users")
+//    @Expose
+//    private List<UserElder> users = new ArrayList<>();
 
     public String getElderImg() {
         return elderImg;
@@ -87,6 +95,14 @@ public class Elder {
         this.mngPh = mngPh;
     }
 
+//    public List<UserElder> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(List<UserElder> users) {
+//        this.users = users;
+//    }
+
     @Override
     public String toString() {
         return "Elder{" +
@@ -96,12 +112,8 @@ public class Elder {
                 ", elderAdr='" + elderAdr + '\'' +
                 ", mngPh='" + mngPh + '\'' +
                 ", elderImg='" + elderImg + '\'' +
+//                ", users=" + users +
                 '}';
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
     }
 
     public Elder() {
