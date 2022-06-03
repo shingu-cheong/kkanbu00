@@ -28,14 +28,15 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void run() {
                 sharedPreferences = getSharedPreferences(ProjectConstants.PREF_NAME,MODE_PRIVATE);
-                if(sharedPreferences.getBoolean(ProjectConstants.IS_LOGIN, true)){
-
-                    Intent intent = new Intent(getApplicationContext(), login.class);
+                myEdit = sharedPreferences.edit();
+                if(sharedPreferences.getBoolean(ProjectConstants.IS_LOGIN, false) ){
+                    Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
                     startActivity(intent); //인트로 실행 후 바로 MainActivity로 넘어감.
                     finish();
+
                 }
                 else{
-                    Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                    Intent intent = new Intent(getApplicationContext(), login.class);
                     startActivity(intent); //인트로 실행 후 바로 MainActivity로 넘어감.
                     finish();
                 }

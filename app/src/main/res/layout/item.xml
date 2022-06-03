@@ -45,21 +45,21 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/gender"
+                android:id="@+id/elder_ph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
-                android:text="성별: "
+                android:text="노인PH: "
                 android:textColor="@android:color/black"
                 android:textSize="15dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/ph"
+                android:id="@+id/mng_ph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:includeFontPadding="false"
-                android:text="P.H: "
+                android:text="보호자PH: "
                 android:textColor="@android:color/black"
                 android:textSize="15dp"
                 android:textStyle="bold" />

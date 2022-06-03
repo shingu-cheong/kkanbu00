@@ -22,7 +22,7 @@ import android.widget.ImageView;
 
 public class MainActivity extends Fragment {
     ImageButton btn_live, btn_schedule;
-    ImageView profile;
+    ImageView profile, present;
     View.OnClickListener cl;
 
     @Override
@@ -40,6 +40,7 @@ public class MainActivity extends Fragment {
         btn_live = view.findViewById(R.id.btn_live);
         btn_schedule = view.findViewById(R.id.btn_schedule);
         profile = view.findViewById(R.id.home_profile);
+        present = view.findViewById(R.id.present);
         GradientDrawable drawable = (GradientDrawable) getContext().getDrawable(R.drawable.home_profileround);
         profile.setBackground(drawable);
         profile.setClipToOutline(true);

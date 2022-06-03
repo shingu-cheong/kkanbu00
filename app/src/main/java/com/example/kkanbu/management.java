@@ -15,12 +15,28 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.example.kkanbu.pojo.Elder;
+import com.example.kkanbu.pojo.Olderman;
+import com.example.kkanbu.retrofit.BaseEndPoint;
+import com.example.kkanbu.retrofit.ElderEndPoint;
+import com.example.kkanbu.retrofit.OldermanEndPoint;
+import com.example.kkanbu.retrofit.RegistrationendPoint;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class management extends Fragment {
 
-    RecyclerView kkanbulist;
+    RecyclerView recyclerView;
     FloatingActionButton addman;
+    List<Elder> elderList;
 
     Adapter adapter;
     View.OnClickListener cl;
@@ -38,16 +54,49 @@ public class management extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_management,container,false);
 
-        kkanbulist = view.findViewById(R.id.kkanbulist);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        kkanbulist.setLayoutManager(layoutManager);
+        recyclerView = view.findViewById(R.id.kkanbulist);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+//        recyclerView.setLayoutManager(layoutManager);
         addman = view.findViewById(R.id.btn_addman);
+        elderList = new ArrayList<>();
 
-        adapter = new Adapter(getContext());
-        kkanbulist.setAdapter(adapter);
 
-        adapter.additem(new item(R.drawable.live, "이현빈", "남", "010-7713-8568"));
 
+//        adapter.additem(new item(R.drawable.live, "이현빈", "남", "010-7713-8568"));
+        ElderEndPoint elderEndPoint = BaseEndPoint.retrofit.create(ElderEndPoint.class);
+        Elder elder = new Elder();
+        Call<List<Elder>> call = elderEndPoint.getUserElders(1);
+        call.enqueue(new Callback<List<Elder>>() {
+            @Override
+            public void onResponse(Call<List<Elder>> call, Response<List<Elder>> response) {
+
+
+                elderList = (List<Elder>) response.body();
+                adapter = new Adapter(getActivity(), elderList);
+
+                recyclerView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Elder>> call, Throwable t) {
+
+            }
+        });
+//        Call<Olderman> checkMapCall = oldermanEndPoint.getDataById(1);
+//        checkMapCall.enqueue(new Callback<Olderman>() {
+//            @Override
+//            public void onResponse(Call<Olderman> call, Response<Olderman> response) {
+//                oldermanList = (List<Olderman>) response.body();
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Olderman> call, Throwable t) {
+//
+//            }
+//        });
         cl = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -4,110 +4,66 @@ package com.example.kkanbu.pojo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.time.LocalDateTime;
+
 public class Login {
 
     @SerializedName("id")
     @Expose
-    private int id;
+    private Integer id;
 
-    @SerializedName("username")
+    @SerializedName("userEmail")
     @Expose
-    private String username;
+    private String userEmail;
 
-    @SerializedName("password")
+    @SerializedName("userPassword")
     @Expose
-    private String password;
+    private String userPassword;
 
-    @SerializedName("email")
-    @Expose
-    private String email;
 
-    @SerializedName("mobile")
-    @Expose
-    private String mobile;
+//    @SerializedName("loginAt")
+//    @Expose
+//    private LocalDateTime loginAt;
 
-    @SerializedName("resetCount")
-    @Expose
-    private int resetCount;
-
-    @SerializedName("role")
-    @Expose
-    private int role = 1;
-
-    @SerializedName("isRest")
-    @Expose
-    private boolean isRest = Boolean.FALSE;
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public int getResetCount() {
-        return resetCount;
-    }
-
-    public void setResetCount(int resetCount) {
-        this.resetCount = resetCount;
-    }
-
-    public boolean isRest() {
-        return isRest;
-    }
-
-    public void setRest(boolean isRest) {
-        this.isRest = isRest;
-    }
-
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
-        this.role = role;
-    }
-
+//    public LocalDateTime getLoginAt() {
+//        return loginAt;
+//    }
+//
+//    public void setLoginAt(LocalDateTime loginAt) {
+//        this.loginAt = loginAt;
+//    }
 
     @Override
     public String toString() {
-        return "Login [id=" + id + ", username=" + username + ", email=" + email + ", mobile=" + mobile
-                + ", resetCount=" + resetCount + ", isRest=" + isRest + "]";
+        return "Login{" +
+                "id=" + id +
+                ", userEmail='" + userEmail + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                '}';
     }
 
     public Login() {

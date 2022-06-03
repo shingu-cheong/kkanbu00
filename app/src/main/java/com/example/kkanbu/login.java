@@ -3,6 +3,7 @@ package com.example.kkanbu;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,17 +12,25 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kkanbu.pojo.Login;
-import com.example.kkanbu.pojo.LoginRegistration;
+import com.example.kkanbu.pojo.User;
 import com.example.kkanbu.retrofit.BaseEndPoint;
 import com.example.kkanbu.retrofit.LoginEndPoint;
+import com.example.kkanbu.retrofit.UserEndPoint;
 import com.example.kkanbu.utils.ProjectConstants;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,55 +62,73 @@ public class login extends AppCompatActivity {
                         boolean validation = checkValidation();
                         if(validation){
                             Login login = new Login();
-                            login.setEmail(login_mail.toString());
-                            login.setPassword(login_psw.toString());
+//                            User user = new User();
+//                            user.setUserEmail(login_mail.toString());
+//                            user.setUserPassword(login_psw.toString());
+                            login.setUserEmail(login_mail.getText().toString());
+                            Log.e("email", login_mail.getText().toString());
+                            login.setUserPassword(login_psw.getText().toString());
                             LoginEndPoint loginEndPoint = BaseEndPoint.retrofit.create(LoginEndPoint.class);
-                            Call<Map> checkMapCall = loginEndPoint.checkUserNameAndPassword(login);
+                            UserEndPoint userEndPoint = BaseEndPoint.retrofit.create(UserEndPoint.class);
+//                            Call<>
+
+
+                            Call<User> checkMapCall = null;
+                            try {
+                                checkMapCall = loginEndPoint.checkUser(login);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+
+
+
                             SweetAlertDialog pDialog = new SweetAlertDialog(login.this,SweetAlertDialog.PROGRESS_TYPE);
                             pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
                             pDialog.setTitleText("Loading....");
                             pDialog.setCancelable(false);
                             pDialog.show();
-                            checkMapCall.enqueue(new Callback<Map>() {
+                            checkMapCall.enqueue(new Callback<User>() {
+                                @RequiresApi(api = Build.VERSION_CODES.N)
                                 @Override
-                                public void onResponse(Call<Map> call, Response<Map> response) {
-                                    pDialog.hide();
-                                    Log.e("응답", response.body().get("message").toString());
-//                                    if(response.body().get("message") == "Login Successfully" )
-//                                    {
+                                public void onResponse(Call<User> call, Response<User> response) {
+                                    if(response.code() == 200){
+                                        pDialog.cancel();
 //                                        new SweetAlertDialog(login.this)
-//                                                .setTitleText(response.body().get("message").toString())
+//                                                .setTitleText("로그인 설")
 //                                                .show();
-//                                        myEdit = sharedPreferences.edit();
-//                                        myEdit.putBoolean(ProjectConstants.IS_LOGIN, false);
-//                                        myEdit.commit();
-//                                        Intent intent = new Intent(com.example.kkanbu.login.this, MainActivity2.class);
-//                                        startActivity(intent);
-//                                        finish();
-//                                    }
-//                                    else{
-//                                        new SweetAlertDialog(login.this, SweetAlertDialog.ERROR_TYPE)
-//                                                .setTitleText("Oops..")
-//                                                .setContentText(response.body().get("message").toString())
-//                                                .show();
-//
-//
-//                                    }
 
-//                                    Intent intent = new Intent(login.this, MainActivity2.class);
-//                                    startActivity(intent);
-//                                    finish();
+                                        Log.e("usernum", response.body().toString());
+
+                                        sharedPreferences = getSharedPreferences(ProjectConstants.PREF_NAME, MODE_PRIVATE);
+                                        myEdit = sharedPreferences.edit();
+                                        myEdit.putBoolean(ProjectConstants.IS_LOGIN, true);
+                                        myEdit.putString(ProjectConstants.USER_EMAIL, login_mail.getText().toString());
+                                        myEdit.putInt(ProjectConstants.USER_NUM, response.body().getId().intValue());
+                                        myEdit.apply();
+
+//                                        Log.e("usernum", user.get().getId().toString());
+                                        Intent intent = new Intent(com.example.kkanbu.login.this, MainActivity2.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }else{
+                                        pDialog.hide();
+                                        new SweetAlertDialog(login.this, SweetAlertDialog.ERROR_TYPE)
+                                                .setTitleText("이메일 또는 비밀번호가 틀렸습니다.")
+                                                .show();
+                                    }
                                 }
 
                                 @Override
-                                public void onFailure(Call<Map> call, Throwable t) {
+                                public void onFailure(Call<User> call, Throwable t) {
+                                    pDialog.hide();
                                     new SweetAlertDialog(login.this, SweetAlertDialog.ERROR_TYPE)
-                                            .setTitleText("Oops..")
-                                            .setContentText(t.getMessage())
+                                            .setTitleText(t.toString())
                                             .show();
-
                                 }
                             });
+
+
                         }
                         
 
