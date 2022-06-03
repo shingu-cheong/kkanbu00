@@ -52,7 +52,16 @@ public class login extends AppCompatActivity {
         login_mail = (EditText)findViewById(R.id.login_email);
         login_psw = (EditText) findViewById(R.id.login_password);
         btn_login = (Button) findViewById(R.id.login_button);
-        
+
+        Button newpage = (Button)findViewById(R.id.join_button);
+        newpage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myintent = new Intent(login.this,RegisterActivity.class);
+                startActivity(myintent);
+                finish();
+            }
+        });
         
         cl = new View.OnClickListener() {
             @Override
