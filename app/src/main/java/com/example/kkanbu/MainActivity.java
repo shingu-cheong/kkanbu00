@@ -3,12 +3,14 @@ package com.example.kkanbu;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
@@ -58,9 +60,6 @@ public class MainActivity extends Fragment {
         }
 
 
-
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -91,31 +90,28 @@ public class MainActivity extends Fragment {
             Log.d("mqttpayload", String.valueOf(jsonObject));
         }).send();
 
-
-
-
         view.findViewById(R.id.btn_popup).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(final View view) {
-                final PopupMenu popupMenu = new PopupMenu(getContext(), view);
-                getActivity().getMenuInflater().inflate(R.menu.popup, popupMenu.getMenu());
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem menuItem) {
-                        if (menuItem.getItemId() == R.id.action_menu1) {
-                            Toast.makeText(getActivity(), "메뉴 1 클릭", Toast.LENGTH_SHORT).show();
-                        } else if (menuItem.getItemId() == R.id.action_menu2) {
-                            Toast.makeText(getActivity(), "메뉴 2 클릭", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getActivity(), "메뉴 3 클릭", Toast.LENGTH_SHORT).show();
-                        }
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
-                        return false;
+                builder.setTitle("리스트 추가 예제");
+
+                builder.setItems(R.array.LAN, new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int pos)
+                    {
+                        String[] items = getResources().getStringArray(R.array.LAN);
+                        Toast.makeText(getActivity(),items[pos],Toast.LENGTH_LONG).show();
                     }
                 });
-                popupMenu.show();
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
+
+
 
         cl = new View.OnClickListener() {
             @Override
