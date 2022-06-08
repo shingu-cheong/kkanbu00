@@ -24,7 +24,7 @@ public class mqtttest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mqtttest);
         button = findViewById(R.id.mqttsub);
-        myMqtt = new MyMqtt("152.67.192.198");
+        myMqtt = new MyMqtt();
 
 
     }

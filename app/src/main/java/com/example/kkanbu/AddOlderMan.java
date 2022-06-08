@@ -1,7 +1,5 @@
 package com.example.kkanbu;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -11,16 +9,13 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kkanbu.pojo.Elder;
@@ -33,8 +28,6 @@ import com.example.kkanbu.retrofit.UserEndPoint;
 import com.example.kkanbu.utils.ProjectConstants;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -50,14 +43,12 @@ import retrofit2.http.Path;
 
 public class AddOlderMan extends AppCompatActivity {
     Toolbar tb_addman;
-    TextInputLayout et_manName, et_manPh, et_manAdr, et_managerPh, et_detail;
+    TextInputLayout et_manName, et_manPh, et_managerPh, et_detail;
+    EditText  et_manAdr;
     SharedPreferences shared ;
-    Button bt_addman, button1;
+    Button bt_addman;
     Integer uid ;
     View.OnClickListener cl;
-
-    private final int GET_GALLERY_IMAGE = 200;
-    private ImageView imageview2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +59,7 @@ public class AddOlderMan extends AppCompatActivity {
         et_manName = findViewById(R.id.et_manName);
         et_manPh = findViewById(R.id.et_manPh);
         et_manAdr = findViewById(R.id.et_manAdress);
+        et_manAdr.setFocusable(false);
         et_managerPh = findViewById(R.id.et_managerPh);
         et_detail = findViewById(R.id.et_manDetail);
         bt_addman = findViewById(R.id.addman);
@@ -79,25 +71,10 @@ public class AddOlderMan extends AppCompatActivity {
         uid = shared.getInt(ProjectConstants.USER_NUM,0);
 
 
-//        Call<User> finduser = userEndPoint.getSingleUser(uid);
-//        finduser.enqueue(new Callback<User>() {
-//            @Override
-//            public void onResponse(Call<User> call, Response<User> response) {
-//                user = response.body();
-//                Log.e("finduser", user.toString());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<User> call, Throwable t) {
-//
-//            }
-//        });
         ActionBar actionBar = getSupportActionBar();
 
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-
-
 
         }
 
@@ -107,75 +84,20 @@ public class AddOlderMan extends AppCompatActivity {
                 switch (v.getId()){
                     case R.id.addman:
                         addman();
+                    case R.id.et_manAdress:
+                        Intent intent = new Intent(AddOlderMan.this, SearchAddress.class);
+                        getSearchResult.launch(intent);
 
                 }
 
             }
         };
 
-//        bt_addman.setOnClickListener(cl);
-//
-//        imageview2 = (ImageView)findViewById(R.id.imageView);
-//        imageview2.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(Intent.ACTION_PICK);
-//                intent. setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-//                startActivityForResult(intent, GET_GALLERY_IMAGE);
-//            }
-//        });
-        Uri uri;
-        ImageView imageView2;
+        bt_addman.setOnClickListener(cl);
+        et_manAdr.setOnClickListener(cl);
 
-        Button selectImageBtn = findViewById(R.id.button1);
-        imageView2 = findViewById(R.id.imageView2);
 
-        selectImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                startActivityResult.launch(intent);
-            }
-        });
     }
-
-    ActivityResultLauncher<Intent> startActivityResult = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                private ImageView imageView2;
-
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if( result.getResultCode() == RESULT_OK && result.getData() != null){
-
-                        Uri uri = result.getData().getData();
-
-                        try {
-                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                            imageView2.setImageBitmap(bitmap);
-
-                        }catch (FileNotFoundException e){
-                            e.printStackTrace();
-                        }catch (IOException e){
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            });
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
-//
-//            Uri selectedImageUri = data.getData();
-//            imageview2.setImageURI(selectedImageUri);
-//
-//        }
-//
-//    }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -233,7 +155,7 @@ public class AddOlderMan extends AppCompatActivity {
 
         Elder elder = new Elder();
 
-        elder.setElderAdr(et_manAdr.getEditText().getText().toString());
+        elder.setElderAdr(et_manAdr.getText().toString());
         elder.setElderImg(null);
         elder.setElderName(et_manName.getEditText().getText().toString());
         elder.setElderPh(et_manPh.getEditText().getText().toString());
@@ -241,5 +163,17 @@ public class AddOlderMan extends AppCompatActivity {
 
         return elder;
     }
+
+    private  final ActivityResultLauncher<Intent> getSearchResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    if (result.getData() != null) {
+                        String data = result.getData().getStringExtra("data");
+                        et_manAdr.setText(data);
+                    }
+                }
+            }
+    );
 
 }

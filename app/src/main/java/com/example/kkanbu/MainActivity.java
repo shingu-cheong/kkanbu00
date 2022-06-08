@@ -11,8 +11,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,17 +25,40 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.example.kkanbu.thread.GetHuman;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.hivemq.client.mqtt.mqtt3.Mqtt3Client;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.nio.charset.StandardCharsets;
+
 public class MainActivity extends Fragment {
-    ImageButton btn_live, btn_schedule;
-    ImageView profile, present;
-    View.OnClickListener cl;
+    private MyMqtt myMqtt;
+    private ImageButton btn_live, btn_schedule;
+    private ImageView profile, present;
+    private GetHuman getHuman;
+    private int humancount, humancountpre;
+    Object SomethingResult;
+    private Mqtt3Client client;
+    private String json, s;
+    private JSONObject jsonObject =null , jsonpre = null;
+    private View.OnClickListener cl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        myMqtt = new MyMqtt();
+        client= myMqtt.getClient();
+
+//
+        }
 
 
-    }
+
 
 
     @Nullable
@@ -47,6 +72,27 @@ public class MainActivity extends Fragment {
         GradientDrawable drawable = (GradientDrawable) getContext().getDrawable(R.drawable.home_profileround);
         profile.setBackground(drawable);
         profile.setClipToOutline(true);
+        client.toAsync().subscribeWith().topicFilter("Sensor/Humancount").callback(subscribe ->{
+            byte[] payload = subscribe.getPayloadAsBytes();
+
+            s = new String(payload, StandardCharsets.UTF_8);
+            try {
+                jsonObject = new JSONObject(s);
+                humancount = jsonObject.getInt("Human");
+                if (humancount == 0){
+                    present.setImageResource(android.R.drawable.presence_invisible);
+                }else {
+                    present.setImageResource(android.R.drawable.presence_online);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Log.d("mqttpayload", String.valueOf(jsonObject));
+        }).send();
+
+
+
 
         view.findViewById(R.id.btn_popup).setOnClickListener(new View.OnClickListener() {
             @Override

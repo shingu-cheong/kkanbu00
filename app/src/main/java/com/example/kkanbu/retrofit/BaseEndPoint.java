@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public interface BaseEndPoint {
-    String BASE_URL = "http:/192.168.68.103:8080";
+    String BASE_URL = "http:/152.67.192.198:8080";
 
     Gson gson = new GsonBuilder()
             .setLenient()
