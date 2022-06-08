@@ -95,7 +95,7 @@ public class MainActivity extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
-                builder.setTitle("리스트 추가 예제");
+                builder.setTitle("노인 선택");
 
                 builder.setItems(R.array.LAN, new DialogInterface.OnClickListener(){
                     @Override

@@ -50,6 +50,8 @@ public class AddOlderMan extends AppCompatActivity {
     Integer uid ;
     View.OnClickListener cl;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
