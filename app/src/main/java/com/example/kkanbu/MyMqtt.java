@@ -94,4 +94,8 @@ public class MyMqtt {
 
         client.toAsync().publish(publish);
     }
+
+    public Mqtt3Client getClient() {
+        return client;
+    }
 }

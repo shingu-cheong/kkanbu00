@@ -62,15 +62,13 @@ public class login extends AppCompatActivity {
                         boolean validation = checkValidation();
                         if(validation){
                             Login login = new Login();
-//                            User user = new User();
-//                            user.setUserEmail(login_mail.toString());
-//                            user.setUserPassword(login_psw.toString());
+
                             login.setUserEmail(login_mail.getText().toString());
                             Log.e("email", login_mail.getText().toString());
                             login.setUserPassword(login_psw.getText().toString());
                             LoginEndPoint loginEndPoint = BaseEndPoint.retrofit.create(LoginEndPoint.class);
                             UserEndPoint userEndPoint = BaseEndPoint.retrofit.create(UserEndPoint.class);
-//                            Call<>
+
 
 
                             Call<User> checkMapCall = null;
@@ -79,8 +77,6 @@ public class login extends AppCompatActivity {
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-
-
 
 
                             SweetAlertDialog pDialog = new SweetAlertDialog(login.this,SweetAlertDialog.PROGRESS_TYPE);
@@ -107,7 +103,7 @@ public class login extends AppCompatActivity {
                                         myEdit.putInt(ProjectConstants.USER_NUM, response.body().getId().intValue());
                                         myEdit.apply();
 
-//                                        Log.e("usernum", user.get().getId().toString());
+
                                         Intent intent = new Intent(com.example.kkanbu.login.this, MainActivity2.class);
                                         startActivity(intent);
                                         finish();

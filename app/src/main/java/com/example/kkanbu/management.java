@@ -58,13 +58,12 @@ public class management extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-//        recyclerView.setLayoutManager(layoutManager);
+
         addman = view.findViewById(R.id.btn_addman);
         elderList = new ArrayList<>();
 
 
 
-//        adapter.additem(new item(R.drawable.live, "이현빈", "남", "010-7713-8568"));
         ElderEndPoint elderEndPoint = BaseEndPoint.retrofit.create(ElderEndPoint.class);
         Elder elder = new Elder();
         Call<List<Elder>> call = elderEndPoint.getUserElders(1);
@@ -85,18 +84,8 @@ public class management extends Fragment {
 
             }
         });
-//        Call<Olderman> checkMapCall = oldermanEndPoint.getDataById(1);
-//        checkMapCall.enqueue(new Callback<Olderman>() {
-//            @Override
-//            public void onResponse(Call<Olderman> call, Response<Olderman> response) {
-//                oldermanList = (List<Olderman>) response.body();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Olderman> call, Throwable t) {
-//
-//            }
-//        });
+
+
         cl = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

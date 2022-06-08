@@ -1,5 +1,7 @@
 package com.example.kkanbu;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +15,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.kkanbu.pojo.Elder;
@@ -40,7 +43,8 @@ import retrofit2.http.Path;
 
 public class AddOlderMan extends AppCompatActivity {
     Toolbar tb_addman;
-    TextInputLayout et_manName, et_manPh, et_manAdr, et_managerPh, et_detail;
+    TextInputLayout et_manName, et_manPh, et_managerPh, et_detail;
+    EditText  et_manAdr;
     SharedPreferences shared ;
     Button bt_addman;
     Integer uid ;
@@ -55,6 +59,7 @@ public class AddOlderMan extends AppCompatActivity {
         et_manName = findViewById(R.id.et_manName);
         et_manPh = findViewById(R.id.et_manPh);
         et_manAdr = findViewById(R.id.et_manAdress);
+        et_manAdr.setFocusable(false);
         et_managerPh = findViewById(R.id.et_managerPh);
         et_detail = findViewById(R.id.et_manDetail);
         bt_addman = findViewById(R.id.addman);
@@ -66,25 +71,10 @@ public class AddOlderMan extends AppCompatActivity {
         uid = shared.getInt(ProjectConstants.USER_NUM,0);
 
 
-//        Call<User> finduser = userEndPoint.getSingleUser(uid);
-//        finduser.enqueue(new Callback<User>() {
-//            @Override
-//            public void onResponse(Call<User> call, Response<User> response) {
-//                user = response.body();
-//                Log.e("finduser", user.toString());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<User> call, Throwable t) {
-//
-//            }
-//        });
         ActionBar actionBar = getSupportActionBar();
 
         if(actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-
-
 
         }
 
@@ -94,6 +84,9 @@ public class AddOlderMan extends AppCompatActivity {
                 switch (v.getId()){
                     case R.id.addman:
                         addman();
+                    case R.id.et_manAdress:
+                        Intent intent = new Intent(AddOlderMan.this, SearchAddress.class);
+                        getSearchResult.launch(intent);
 
                 }
 
@@ -101,6 +94,7 @@ public class AddOlderMan extends AppCompatActivity {
         };
 
         bt_addman.setOnClickListener(cl);
+        et_manAdr.setOnClickListener(cl);
 
 
     }
@@ -161,7 +155,7 @@ public class AddOlderMan extends AppCompatActivity {
 
         Elder elder = new Elder();
 
-        elder.setElderAdr(et_manAdr.getEditText().getText().toString());
+        elder.setElderAdr(et_manAdr.getText().toString());
         elder.setElderImg(null);
         elder.setElderName(et_manName.getEditText().getText().toString());
         elder.setElderPh(et_manPh.getEditText().getText().toString());
@@ -169,5 +163,17 @@ public class AddOlderMan extends AppCompatActivity {
 
         return elder;
     }
+
+    private  final ActivityResultLauncher<Intent> getSearchResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    if (result.getData() != null) {
+                        String data = result.getData().getStringExtra("data");
+                        et_manAdr.setText(data);
+                    }
+                }
+            }
+    );
 
 }
