@@ -14,11 +14,14 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 public class MainActivity extends Fragment {
     ImageButton btn_live, btn_schedule;
@@ -44,6 +47,29 @@ public class MainActivity extends Fragment {
         GradientDrawable drawable = (GradientDrawable) getContext().getDrawable(R.drawable.home_profileround);
         profile.setBackground(drawable);
         profile.setClipToOutline(true);
+
+        view.findViewById(R.id.btn_popup).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                final PopupMenu popupMenu = new PopupMenu(getContext(), view);
+                getActivity().getMenuInflater().inflate(R.menu.popup, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        if (menuItem.getItemId() == R.id.action_menu1) {
+                            Toast.makeText(getActivity(), "메뉴 1 클릭", Toast.LENGTH_SHORT).show();
+                        } else if (menuItem.getItemId() == R.id.action_menu2) {
+                            Toast.makeText(getActivity(), "메뉴 2 클릭", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(), "메뉴 3 클릭", Toast.LENGTH_SHORT).show();
+                        }
+
+                        return false;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
 
         cl = new View.OnClickListener() {
             @Override
