@@ -3,31 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/drawable-v24/ic_baseline_arrow_back_24.xml" value="0.229" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/drawable-v24/ic_baseline_arrow_drop_down_24.xml" value="0.1" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/drawable/home_pofile_round.xml" value="0.1955" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.229" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/drawable/ic_image.xml" value="0.243" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_add_older_man.xml" value="0.75" />
         <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_cameratest.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_intro.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_login.xml" value="0.33" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_main.xml" value="0.7409470752089137" />
+        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_main2.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_management.xml" value="0.33" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_monitoring.xml" value="0.67" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_register.xml" value="0.25" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_searchaddress.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_spring_test.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/content_main.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/detail_management.xml" value="0.33" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/google_login.xml" value="0.33" />
+        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_management.xml" value="0.67" />
+        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_monitoring.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_register.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/item.xml" value="0.33" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/schedule.xml" value="0.75" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/setting.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/switch_item.xml" value="0.14786967418546365" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/menu/bottom_menu.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/412-11/AndroidStudioProjects/kkanbu00/app/src/main/res/menu/popup.xml" value="0.2351851851851852" />
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/kkanbu/app/src/main/res/drawable-v24/home.xml" value="0.1185" />
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/kkanbu/app/src/main/res/drawable-v24/ic_baseline_elderly_24.xml" value="0.1185" />
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/kkanbu/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1185" />
@@ -57,10 +40,25 @@
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/kkanbu00/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
         <entry key="..\:/Users/rhrna/AndroidStudioProjects/kkanbu00/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_add_older_man.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_cameratest.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_intro.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_login.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_main.xml" value="0.75" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_main2.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_management.xml" value="0.25316455696202533" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/activity_register.xml" value="0.9" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/dfsf.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/fsdfs.xml" value="0.3651041666666667" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/gittest.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/google_login.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/item.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/schedule.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ssimp/AndroidStudioProjects/kkanbu00/app/src/main/res/layout/setting.xml" value="0.36614583333333334" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
