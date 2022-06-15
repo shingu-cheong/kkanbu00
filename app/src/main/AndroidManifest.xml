@@ -48,11 +48,6 @@
             android:name=".schedule"
             android:exported="true" />
 
-        <activity
-            android:name=".SearchAddress"
-            android:exported="true" />
-
-
 
 
         <activity

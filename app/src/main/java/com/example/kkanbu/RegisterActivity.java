@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.kkanbu.pojo.LoginRegistration;
@@ -31,7 +30,7 @@ import retrofit2.Response;
 public class RegisterActivity extends AppCompatActivity {
 
     TextInputLayout et_email, et_name, et_psw, et_psw2;
-    Button bt_join, delete;
+    Button bt_join;
 
     View.OnClickListener cl;
 
@@ -40,16 +39,6 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        Button delete = findViewById(R.id.delete);
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RegisterActivity.this, login.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         et_email = findViewById(R.id.et_email);
         et_name = findViewById(R.id.et_name);
