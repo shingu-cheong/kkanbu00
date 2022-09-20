@@ -31,8 +31,8 @@
             android:label="kkanbu"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
+            android:name="com.example.kkanbu.LoginActivity"
+            android:exported="true" />
         <activity
             android:name=".cameratest"
             android:exported="true" />
